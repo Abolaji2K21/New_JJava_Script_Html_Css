@@ -62,3 +62,31 @@ searchBook.addEventListener("keyup", function (e){
 
 })
 
+const addBook = document.forms["add-book"]
+console.log(addBook);
+addBook.addEventListener("submit",  (e) =>{
+    e.preventDefault()
+    const inputValue = addBook.querySelector("input").value.toString() ;
+    // console.log(inputValue)
+    if(inputValue.trim().length > 0 && /\w/.test(inputValue[e])) {
+        const LiTag = document.createElement("li");
+        const spanOne = document.createElement("span");
+        const spanTwo = document.createElement("span");
+
+        spanOne.classList = "name";
+        spanTwo.classList = 'delete'
+        LiTag.appendChild(spanOne);
+        LiTag.appendChild(spanTwo);
+
+        // console.log(LiTag)
+
+        spanOne.textContent = inputValue;
+        spanTwo.textContent = "delete";
+        bookListOne.appendChild(LiTag);
+
+
+        addBook.reset()
+    }
+})
+
+
